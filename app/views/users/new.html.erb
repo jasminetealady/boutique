@@ -16,3 +16,7 @@
 
 <%= f.submit "Sign Up" %>
 <%end%>
+
+<% if flash[:message] %>
+<p><%= flash[:message] %></p>
+<%end%>
