@@ -1,3 +1,18 @@
 <p>Signup</p>
 
-<p>Form for signup</p>
+<%= form_for(@user) do |f| %>
+
+<p><%= f.label :first_name, "First Name" %><br />
+<%= f.text_field :first_name %></p>
+
+<p><%= f.label :last_name, "Last Name" %><br />
+<%= f.text_field :last_name %></p>
+
+<p><%= f.label :email %><br />
+<%= f.text_field :email %></p>
+
+<p><%= f.label :password %><br />
+<%= f.password_field :password %></p>
+
+<%= f.submit "Sign Up" %>
+<%end%>
