@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     else
     user = User.find_by(email: user_params[:email])
     if user && user.authenticate(user_params[:password])
-    current_user(user.id)
+    current_user(user)
     redirect_to root_path
     else
     redirect_to root_path
