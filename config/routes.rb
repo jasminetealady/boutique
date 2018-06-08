@@ -7,12 +7,14 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback', to: 'sessions#create'
 
   #User Signup
-  resources :users, only: [:create]
+
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
 
   #User Login
   get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy'
 
   #Cart
   get '/cart', to: 'carts#show'

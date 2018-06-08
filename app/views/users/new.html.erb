@@ -1,6 +1,6 @@
 <p>Signup</p>
 
-<%= form_for(@user) do |f| %>
+<%= form_for @user, url: signup_path do |f| %>
 
 <p><%= f.label :first_name, "First Name" %><br />
 <%= f.text_field :first_name %></p>

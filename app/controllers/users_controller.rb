@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    if fields_present
+    if signup_fields_present
     @user = User.create(user_params)
     redirect_to login_path
     else
@@ -14,12 +14,5 @@ class UsersController < ApplicationController
     end
   end
 
-  private
-    def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :password)
-    end
 
-    def fields_present
-      user_params[:first_name].present? && user_params[:last_name].present? && user_params[:email].present? && user_params[:password].present?
-    end
 end
