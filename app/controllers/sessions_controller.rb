@@ -15,7 +15,8 @@ class SessionsController < ApplicationController
     current_user(user)
     redirect_to root_path
     else
-    redirect_to root_path
+    flash[:message] = "Ya fucked up"
+    redirect_to login_path
     end
     end
   end

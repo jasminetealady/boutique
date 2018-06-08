@@ -18,3 +18,17 @@
    font-family: "Avenir";
    padding: 3rem;
  }
+
+ .main {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 5rem;
+ }
+
+ .shop-item-image img {
+   width: 100%;
+ }
+
+ .shop-item {
+   width: 16%;
+ }

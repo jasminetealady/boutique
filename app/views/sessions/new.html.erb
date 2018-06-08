@@ -11,4 +11,9 @@
 
 <%end%>
 
+<br />
+<%if flash[:message] %>
+  <%= flash[:message] %>
+<%end%>
+
 <p><a href='/auth/facebook'>Login with Facebook</a></p>
