@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def create
     if signup_fields_present
     @user = User.create(user_params)
+    @user.cart = Cart.create(user_id: @user.id)
     redirect_to login_path
     else
     flash[:message] = "Yo you need to fill those fields homie"
