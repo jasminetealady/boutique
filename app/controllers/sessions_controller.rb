@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
     current_user(user)
     redirect_to root_path
     else
-    flash[:message] = "Ya fucked up"
+    flash[:message] = "Incorrect login"
     redirect_to login_path
     end
     end
@@ -36,15 +36,3 @@ class SessionsController < ApplicationController
 
 
 end
-
-
-# User class method
-#
-# def self.find_or_create_by_omniauth(auth_hash)
-#
-#   self.where(email: auth["info"]["email"]).first_or_create do |user|
-      # user.id = auth["info"]["uid"]
-#     user.password = SecureRandom.hex
-#   end
-
-#raise auth.inspect

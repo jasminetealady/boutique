@@ -1,0 +1,11 @@
+<div class="main">
+  <div class="shop-item">
+    <div class="shop-item-image">
+    <%= image_tag @item.picture %>
+    <p><%= @item.name %></p>
+    <p><%= @item.price %></p>
+    <p><%= @item.description %></p>
+    <p><a href="/items/<%=@item.id%>/add_to_cart" class="add-to-cart">Add to Cart</a></p>
+    </div>
+  </div>
+</div>

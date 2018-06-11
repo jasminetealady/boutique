@@ -1,1 +1,15 @@
 <h1>Cart</h1>
+
+
+<div class="main">
+  <% current_cart.each do |item| %>
+    <div class="shop-item">
+      <div class="shop-item-image"><%= image_tag item["picture"] %></div>
+      <p><%= link_to item["name"], item_path(item["id"]) %></p>
+      <p><%= item["price"] %></p>
+      <p><%= item["description"] %></p>
+      <p><a href="/items/<%=item["id"]%>/remove_from_cart">Remove From Cart</a></p>
+    </div>
+  <%end%>
+
+</div>

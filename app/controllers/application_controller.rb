@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user
+  helper_method :current_user, :current_cart
 
 private
   def user_params
@@ -8,6 +8,10 @@ private
 
   def signup_fields_present
     user_params[:first_name].present? && user_params[:last_name].present? && user_params[:email].present? && user_params[:password].present?
+  end
+
+  def current_cart
+    session[:cart] ||= []
   end
 
   def current_user(user=nil)

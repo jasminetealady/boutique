@@ -16,15 +16,15 @@
     <a href="/">Home</a>
     <a href="/login">Log In</a>
     <a href="/signup">Sign Up</a>
-    <a href="/cart">Cart</a>
     <a href="/shop">Shop</a>
     <%if session[:user_id]%>
     <a href="/logout">Log Out</a>
     <%end%>
+    <a href="/cart">Cart (<%=current_cart.count%> items)</a>
 
 
       <%= yield %>
-  
+
 
 
   </body>
