@@ -6,17 +6,18 @@ class SessionsController < ApplicationController
 
   def create
     if auth
-    user = User.find_or_create_by_omniauth(auth)
-    session[:user_id] = user.id
-    redirect_to root_path
+      user = User.find_or_create_by_omniauth(auth)
+      current_user(user)
+      redirect_to root_path
     else
-    user = User.find_by(email: user_params[:email])
-    if user && user.authenticate(user_params[:password])
-    current_user(user)
-    redirect_to root_path
+      user = User.find_by(email: user_params[:email])
+      if user && user.authenticate(user_params[:password])
+      current_user(user)
+      associate_cart_items_to_user
+      redirect_to root_path
     else
-    flash[:message] = "Incorrect login"
-    redirect_to login_path
+      flash[:message] = "Incorrect login"
+      redirect_to login_path
     end
     end
   end

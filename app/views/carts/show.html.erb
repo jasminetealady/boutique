@@ -5,13 +5,31 @@
   <% current_cart.each do |item| %>
     <div class="shop-item">
       <div class="shop-item-image">
-        <% item = Item.find(item["item_id"])%>
-        <%= image_tag item["picture"] %></div>
-        <p><%= link_to item["name"], item_path(item["id"]) %></p>
-        <p><%= item["price"] %></p>
-        <p><%= item["description"] %></p>
-        <p><a href="/items/<%=item["id"]%>/remove_from_cart">Remove From Cart</a></p>
+        <% @item = Item.find(item["item_id"])%>
+        <% @cart_item = CartItem.find_by(item_id: @item.id)%>
+
+        <%= image_tag @item["picture"] %></div>
+        <p><%= link_to @item["name"], item_path(@item) %></p>
+        <p><%= @item["price"] %></p>
+        <p><%= @item["description"] %></p>
+
+        <p>
+          <%=form_tag({controller: "items", action: "update", id: @item}, method: "put") do %>
+            <p><%= label_tag "Quantity" %></p>
+            <p><%= text_field_tag :quantity, @cart_item.quantity %></p>
+            <p><%= submit_tag "Update Quantity" %></p>
+          <%end%>
+        </p>
+
+
+        <p><%= link_to "Remove From Cart", {controller: "items", action: "destroy", id: @item}, method: "delete", class: "remove-from-cart"%></p>
+
     </div>
   <%end%>
 
+<% if current_user %>
+<% current_user.cart.cart_items.each do |item| %>
+<%= item.item_id %>
+<%end%>
+<%end%>
 </div>

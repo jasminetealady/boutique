@@ -10,17 +10,20 @@
   </head>
 
   <body>
+    <header>
+      <h1>boutique</h1>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/login">Log In</a>
+        <a href="/signup">Sign Up</a>
+        <a href="/shop">Shop</a>
+        <%if session[:user_id]%>
+        <a href="/logout">Log Out</a>
+        <%end%>
+        <a href="/cart">Cart (<%=current_cart.count%> items)</a>
+      </nav>
+    </header>
 
-    <h1>Welcome to Boutique</h1>
-
-    <a href="/">Home</a>
-    <a href="/login">Log In</a>
-    <a href="/signup">Sign Up</a>
-    <a href="/shop">Shop</a>
-    <%if session[:user_id]%>
-    <a href="/logout">Log Out</a>
-    <%end%>
-    <a href="/cart">Cart (<%=current_cart.count%> items)</a>
 
 
       <%= yield %>

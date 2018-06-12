@@ -14,10 +14,7 @@
  *= require_self
  */
 
- body {
-   font-family: "Avenir";
-   padding: 3rem;
- }
+
 
  .main {
   display: flex;

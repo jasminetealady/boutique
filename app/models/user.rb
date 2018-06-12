@@ -5,7 +5,6 @@ class User < ApplicationRecord
   has_many :reviews
   has_one :cart
 
-
   def self.find_or_create_by_omniauth(auth)
     where(email: auth["info"]["email"]).first_or_create do |user|
       user.id = auth["info"]["uid"]

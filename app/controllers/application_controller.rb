@@ -23,4 +23,17 @@ private
       nil
     end
   end
+
+  def associate_cart_items_to_user
+    if current_cart
+      current_cart.each do |item|
+        item["cart_id"] = current_user.cart.id
+        item = CartItem.find_by(item_id: item["item_id"])
+        item.cart_id = current_user.cart.id
+        item.save
+      end
+    end
+  end
+
+  
 end

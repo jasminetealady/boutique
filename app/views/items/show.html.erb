@@ -5,7 +5,7 @@
     <p><%= @item.name %></p>
     <p><%= @item.price %></p>
     <p><%= @item.description %></p>
-    <p><a href="/items/<%=@item.id%>/add_to_cart" class="add-to-cart">Add to Cart</a></p>
+    <p><%= link_to "Add to Cart", {controller: "items", action: "create", id: @item}, method: "post"%></a></p>
     </div>
   </div>
 </div>
