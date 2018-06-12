@@ -10,19 +10,25 @@
   </head>
 
   <body>
+    <div class="free-shipping">
+      <p>Free Shipping On All Orders $150 and Above!</p>
+    </div>
     <header>
-      <h1>boutique</h1>
+      <h1>luxe boutique</h1>
       <nav>
-        <a href="/">Home</a>
-        <a href="/login">Log In</a>
-        <a href="/signup">Sign Up</a>
-        <a href="/shop">Shop</a>
-        <%if session[:user_id]%>
-        <a href="/logout">Log Out</a>
+        <a href="/">home</a>
+        <% if !current_user %>
+        <a href="/login">log in</a>
+        <a href="/signup">sign up</a>
         <%end%>
-        <a href="/cart">Cart (<%=current_cart.count%> items)</a>
+        <a href="/shop">shop</a>
+        <%if current_user%>
+        <a href="/logout">log out</a>
+        <%end%>
+        <a href="/cart">cart (<%=current_cart.count%> items)</a>
       </nav>
     </header>
+    <hr />
 
 
 
@@ -30,6 +36,14 @@
 
 
 
+      <footer>
+        <a href="">About Us</a>
+        <a href="">Contact Us</a>
+        <a href="">Affiliate Program</a>
+        <a href="">Blog</a>
+        <a href="">FAQ</a>
+        <a href="">Terms & Conditions</a>
+      </footer>
   </body>
 
 </html>

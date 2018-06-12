@@ -14,18 +14,101 @@
  *= require_self
  */
 
+ $mauve: #ccbac4;
 
+ html {
+   font-size: 16px;
+   height: 100%;
+ }
+
+  body {
+    font-family: "Avenir";
+    color: #8e5e78;
+  }
+
+  .free-shipping {
+    background-color: #ccbac4;
+    height: 1.5rem;
+    color: white;
+    font-size: .7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10rem;
+    width: 100%;
+  }
+
+  hr {
+    width: 70%;
+    color: #ccbac4;
+    background-color: #ccbac4;
+    border: 0;
+    height: 1px;
+  }
+
+
+  a {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: "Raleway";
+    color: #ccbac4;
+  }
+
+  nav {
+    padding-right: 7rem;
+  }
+
+  nav a {
+    padding-left: 1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: .8rem;
+    color: #ccbac4;
+    font-family: "Avenir Next";
+  }
+
+  a:hover {
+    color: #d6e4e8;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  header h1 {
+    padding-left: 15rem;
+    font-family: "Sacramento";
+    font-weight: 300;
+    font-size: 3.5rem;
+    color: #ccbac4;
+  }
+
+  input[type=submit] {
+    border-color: #d18ab0;
+    border-radius: 3px;
+    padding: .75rem;
+    color: #d18ab0;
+    cursor: pointer;
+  }
+
+  .remove-from-cart {
+    border: 1px solid #d18ab0;
+    border-radius: 3px;
+    padding: .75rem;
+    color: #d18ab0;
+    cursor: pointer;
+  }
 
  .main {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
-  padding-top: 5rem;
- }
-
- .shop-item-image img {
-   width: 100%;
- }
-
- .shop-item {
-   width: 16%;
+  padding: 5rem;
+  height: 100%;
  }

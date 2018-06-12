@@ -1,11 +1,12 @@
 <div class="main">
-  <div class="shop-item">
-    <div class="shop-item-image">
+  <div class="shop-item-show">
     <%= image_tag @item.picture %>
-    <p><%= @item.name %></p>
-    <p><%= @item.price %></p>
-    <p><%= @item.description %></p>
-    <p><%= link_to "Add to Cart", {controller: "items", action: "create", id: @item}, method: "post"%></a></p>
+    <div class="shop-item-show-text">
+      <p class="shop-item-show-title"><%= @item.name %></p>
+      <p><%= number_to_currency(@item.price) %></p>
+      <p><%= @item.description %></p>
+      <p class="add-to-cart"><%= link_to "Add to Cart", {controller: "items", action: "create", id: @item}, method: "post"%></a></p>
     </div>
+
   </div>
 </div>

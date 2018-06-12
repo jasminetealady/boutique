@@ -2,10 +2,10 @@
 <div class="main">
   <% @items.each do |item| %>
     <div class="shop-item">
-      <div class="shop-item-image"><%= image_tag item.picture %></div>
+      <%= image_tag item.picture %>
       <p><%= link_to item.name, item_path(item) %></p>
-      <p><%= item.price %></p>
-      <p><%= item.description %></p>
+      <p><%= number_to_currency(item.price) %></p>
+
     </div>
   <%end%>
 

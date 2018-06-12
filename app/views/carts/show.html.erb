@@ -1,16 +1,14 @@
-<h1>Cart</h1>
-
 
 <div class="main">
   <% current_cart.each do |item| %>
     <div class="shop-item">
-      <div class="shop-item-image">
+
         <% @item = Item.find(item["item_id"])%>
         <% @cart_item = CartItem.find_by(item_id: @item.id)%>
 
-        <%= image_tag @item["picture"] %></div>
+        <div class="shop-item-image"><%= image_tag @item["picture"], class: "shop-item-image" %></div>
         <p><%= link_to @item["name"], item_path(@item) %></p>
-        <p><%= @item["price"] %></p>
+        <p><%= number_to_currency(@item["price"]) %></p>
         <p><%= @item["description"] %></p>
 
         <p>
@@ -27,9 +25,5 @@
     </div>
   <%end%>
 
-<% if current_user %>
-<% current_user.cart.cart_items.each do |item| %>
-<%= item.item_id %>
-<%end%>
-<%end%>
+
 </div>
