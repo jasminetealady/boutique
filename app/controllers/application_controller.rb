@@ -35,5 +35,10 @@ private
     end
   end
 
-  
+  def cart_total
+    cart_prices = []
+    current_cart.each{|i| cart_prices << Item.find_by(id: i["item_id"]).price * i["quantity"].to_i}
+    cart_prices.sum
+  end
+
 end

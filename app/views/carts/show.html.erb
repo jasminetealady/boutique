@@ -1,29 +1,38 @@
-
 <div class="main">
-  <% current_cart.each do |item| %>
-    <div class="shop-item">
+
+
+
+  <% @cart.each do |item| %>
+    <div class="shop-item-cart">
 
         <% @item = Item.find(item["item_id"])%>
         <% @cart_item = CartItem.find_by(item_id: @item.id)%>
 
-        <div class="shop-item-image"><%= image_tag @item["picture"], class: "shop-item-image" %></div>
-        <p><%= link_to @item["name"], item_path(@item) %></p>
-        <p><%= number_to_currency(@item["price"]) %></p>
-        <p><%= @item["description"] %></p>
+        <div class="shop-item-cart-image"><%= image_tag @item["picture"] %></div>
 
-        <p>
-          <%=form_tag({controller: "items", action: "update", id: @item}, method: "put") do %>
-            <p><%= label_tag "Quantity" %></p>
-            <p><%= text_field_tag :quantity, @cart_item.quantity %></p>
-            <p><%= submit_tag "Update Quantity" %></p>
-          <%end%>
-        </p>
+        <div class="shop-item-cart-text">
+          <h3><%= link_to @item["name"], item_path(@item), class: "shop-item-cart-title" %></h3>
+          <p><%= number_to_currency(@item["price"]) %></p>
+        </div>
+
+            <%=form_tag({controller: "items", action: "update", id: @item}, method: "put") do %>
+              <%= label_tag "Quantity: " %>
+              <%= text_field_tag :quantity, @cart_item.quantity %>
+              <%= submit_tag "Update Quantity" %>
+            <%end%>
 
 
-        <p><%= link_to "Remove From Cart", {controller: "items", action: "destroy", id: @item}, method: "delete", class: "remove-from-cart"%></p>
+
+          <p><%= link_to "Remove From Cart", {controller: "items", action: "destroy", id: @item}, method: "delete", class: "remove-from-cart"%></p>
 
     </div>
   <%end%>
 
+</div>
 
+<div class="order">
+  <h3>Subtotal: </h3>
+  <p><%= number_to_currency(@total) %></p>
+
+  <p><%= link_to "Checkout"%></p>
 </div>

@@ -10,6 +10,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.find(params[:id])
+    #creates CartItem and if logged in associates with user
     @cart_item = CartItem.create(item_id: @item.id, cart_id: current_user.try(:cart).try(:id))
     current_cart << @cart_item
     redirect_to item_path(@item)
@@ -17,9 +18,13 @@ class ItemsController < ApplicationController
 
 
   def update
+    #updates users cart.cart_items
     @item = CartItem.find_by(item_id: item_params[:id])
     @item.quantity = item_params[:quantity]
     @item.save
+    #updates session cart items
+    item = current_cart.find{|i| i["item_id"] == item_params[:id].to_i}
+    item["quantity"] = item_params[:quantity]
     redirect_to cart_path
   end
 

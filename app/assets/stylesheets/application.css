@@ -97,13 +97,6 @@
     cursor: pointer;
   }
 
-  .remove-from-cart {
-    border: 1px solid #d18ab0;
-    border-radius: 3px;
-    padding: .75rem;
-    color: #d18ab0;
-    cursor: pointer;
-  }
 
  .main {
   display: flex;

@@ -1,3 +1,98 @@
 // Place all the styles related to the Carts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.shop-item-cart {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 80%;
+  height: 10rem;
+  border-bottom: solid 1px #d6e4e8;
+  padding: 2rem 0rem;
+}
+
+.shop-item-cart-image {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  max-height: 100%;
+  // border: solid 1px red;
+}
+
+.shop-item-cart-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  // border: solid 1px red;
+}
+
+.shop-item-cart-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-height: 100%;
+  width: 25%;
+}
+
+.shop-item-cart p {
+  margin-top: 1rem;
+  color: #ccbac4;
+  line-height: 2rem;
+}
+
+.shop-item-cart-title {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #8e5e78;
+}
+
+.cart-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border: solid 1px red;
+  margin: 3rem;
+}
+
+.shop-item-cart input[type=submit] {
+  border: 1px solid #8e5e78;
+  border-radius: 3px;
+  padding: .3rem;
+  margin-top: 1rem;
+  text-align: center;
+  background-color: #8e5e78;
+  font-size: .66rem;
+  color: white;
+  font-family: "Avenir Next";
+  text-transform: uppercase;
+}
+
+.shop-item-cart input[type=text] {
+  border-radius: 3px;
+  border: solid .5px #ccbac4;
+  text-align: center;
+  width: 5rem;
+}
+
+.shop-item-cart form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 10%;
+}
+
+.shop-item-cart form label {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: .75rem;
+}
+
+.remove-from-cart {
+  // padding-left: .75rem;
+  cursor: pointer;
+  width: 25%;
+}

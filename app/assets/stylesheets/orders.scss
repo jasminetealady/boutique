@@ -1,3 +1,30 @@
 // Place all the styles related to the Orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.order {
+  display: flex;
+  justify-content: flex-end;
+  width:80%;
+  align-self: center;
+  color: #ccbac4;
+  font-size: 1.25rem;
+}
+
+.order a {
+    margin-left: 3rem;
+    border: 1px solid #8e5e78;
+    border-radius: 3px;
+    padding: .5rem;
+    margin-top: 1rem;
+    text-align: center;
+    background-color: #8e5e78;
+    font-size: 1rem;
+    color: white;
+    font-family: "Avenir Next";
+    text-transform: uppercase;
+}
+
+.order h3 {
+  margin-right: 2rem;
+}
