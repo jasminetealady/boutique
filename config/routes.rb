@@ -10,6 +10,10 @@ Rails.application.routes.draw do
 
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
+  
+  resources :users do
+    resources :orders
+  end
 
   #User Login
   get '/login', to: 'sessions#new'

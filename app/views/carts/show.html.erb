@@ -30,9 +30,15 @@
 
 </div>
 
-<div class="order">
+<div class="subtotal">
   <h3>Subtotal: </h3>
   <p><%= number_to_currency(@total) %></p>
 
-  <p><%= link_to "Checkout"%></p>
+  <p><%= link_to "Checkout", new_user_order_path(@user.id) if @user %></p>
+  <p><%= link_to "Log In to Complete Order", login_path if !@user %></p>
+
+  <% if flash[:message] %>
+    <%= flash[:message]%>
+  <%end%>
+
 </div>

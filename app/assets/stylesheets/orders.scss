@@ -2,29 +2,120 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.order {
+.order-main-wrapper {
   display: flex;
-  justify-content: flex-end;
-  width:80%;
-  align-self: center;
+  width:100%;
+  justify-content: center;
+}
+
+.order-main {
+  width: 70%;
+  display: flex;
+  margin-top: 3rem;
+}
+
+.order-address {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+
+.order-address h3 {
+  text-align: center;
+  font-weight: bold;
+  color: #8e5e78;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.order-items {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  border-left: solid 1px lightgrey;
+}
+
+.order-item {
+  display: flex;
+  align-items: center;
+  margin-left: 3rem;
+}
+
+.order-item-image {
+  width: 20%;
+}
+
+.order-item-image img {
+  object-fit: contain;
+  width: 100%;
+  border-radius: 5px;
+  border: solid 1px lightgrey;
+}
+
+.order-item p {
+  font-weight: bold;
+  font-family: "Raleway";
+  margin-left: 1.5rem;
+}
+
+.order-item {
+  margin-top: 1rem;
+}
+
+.order-address input[type=text], .order-address input[type=number] {
+  border-radius: 5px;
+  height: 1.5rem;
+  width: 15rem;
+  padding: .5rem 0;
+  border: solid 1px #ccbac4;
   color: #ccbac4;
-  font-size: 1.25rem;
+  text-align: center;
+  width: 80%;
 }
 
-.order a {
-    margin-left: 3rem;
-    border: 1px solid #8e5e78;
-    border-radius: 3px;
-    padding: .5rem;
-    margin-top: 1rem;
-    text-align: center;
-    background-color: #8e5e78;
-    font-size: 1rem;
-    color: white;
-    font-family: "Avenir Next";
-    text-transform: uppercase;
+.order-address input[type=submit] {
+  border: 1px solid #8e5e78;
+  border-radius: 3px;
+  padding: .3rem;
+  margin-top: 2rem;
+  text-align: center;
+  background-color: #8e5e78;
+  font-size: 1rem;
+  color: white;
+  font-family: "Avenir Next";
+  text-transform: uppercase;
+  width: 30%;
 }
 
-.order h3 {
-  margin-right: 2rem;
+.order-address form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.order-subtotal {
+  align-self:flex-end;
+  font-weight: bold;
+  font-family: "Raleway";
+  font-size: 1.3rem;
+}
+
+.order-save-address {
+  font-weight: bold;
+  margin-top: 2rem;
+}
+
+
+.order-name {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin-bottom: 1rem;
+}
+
+.order-name input[type=text]{
+  width: 48%;
 }

@@ -26,6 +26,14 @@
     color: #8e5e78;
   }
 
+  .main {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-around;
+   padding: 5rem;
+   height: 100%;
+  }
+
   .free-shipping {
     background-color: #ccbac4;
     height: 1.5rem;
@@ -96,12 +104,3 @@
     color: #d18ab0;
     cursor: pointer;
   }
-
-
- .main {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 5rem;
-  height: 100%;
- }

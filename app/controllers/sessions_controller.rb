@@ -14,7 +14,11 @@ class SessionsController < ApplicationController
       if user && user.authenticate(user_params[:password])
       current_user(user)
       associate_cart_items_to_user
+      if !current_cart.empty?
+        redirect_to cart_path
+      else
       redirect_to root_path
+      end
     else
       flash[:message] = "Incorrect login"
       redirect_to login_path

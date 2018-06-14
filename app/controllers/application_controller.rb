@@ -1,7 +1,12 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user, :current_cart
+  helper_method :current_user, :current_cart, :logged_in?
 
 private
+
+  def logged_in?
+    current_user.present
+  end
+
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password)
   end
@@ -40,5 +45,6 @@ private
     current_cart.each{|i| cart_prices << Item.find_by(id: i["item_id"]).price * i["quantity"].to_i}
     cart_prices.sum
   end
+
 
 end

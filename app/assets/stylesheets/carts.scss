@@ -96,3 +96,30 @@
   cursor: pointer;
   width: 25%;
 }
+
+.subtotal {
+  display: flex;
+  justify-content: flex-end;
+  width:80%;
+  align-self: center;
+  color: #ccbac4;
+  font-size: 1.25rem;
+}
+
+.subtotal a {
+    margin-left: 3rem;
+    border: 1px solid #8e5e78;
+    border-radius: 3px;
+    padding: .5rem;
+    margin-top: 1rem;
+    text-align: center;
+    background-color: #8e5e78;
+    font-size: 1rem;
+    color: white;
+    font-family: "Avenir Next";
+    text-transform: uppercase;
+}
+
+.subtotal h3 {
+  margin-right: 2rem;
+}
