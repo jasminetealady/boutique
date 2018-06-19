@@ -40,3 +40,9 @@
   <p><%= link_to "Log In to Complete Order", login_path if !@user %></p>
 
 </div>
+
+<% if logged_in? %>
+<% user_items.each do |item| %>
+<%= Item.find(item["item_id"]).name %>
+<%end%>
+<%end%>

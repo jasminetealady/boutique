@@ -35,7 +35,7 @@ private
         #adds users cart id in session
         item["cart_id"] = current_user.cart.try(:id)
         #adds users cart id to cart item that went into session
-        current_user.cart.cart_items.create(item_id: item["item_id"] )
+        user_items.create(item_id: item["item_id"] )
         # item = CartItem.find_by(item_id: item["item_id"])
         # item.cart_id = current_user.cart.try(:id)
         # item.save

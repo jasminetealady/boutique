@@ -1,7 +1,6 @@
 class CartsController < ApplicationController
 
   def show
-    # raise issue
     @cart = current_cart
     @total = cart_total
     @user = current_user

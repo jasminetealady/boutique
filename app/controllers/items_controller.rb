@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.find(params[:id])
-    #creates CartItem and if logged in associates with user
+    #creates CartItem and if logged in associates with user or cart_id is nil
     @cart_item = CartItem.create(item_id: @item.id, cart_id: current_user.try(:cart).try(:id))
     current_cart << @cart_item
     redirect_to item_path(@item)
@@ -31,9 +31,13 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
+    @item = Item.find(item_params[:id])
+    #removes from session
     current_cart.delete_if {|item| item["item_id"] == @item.id}
-    user_items.destroy(CartItem.find_by(item_id: @item.id)) if current_user
+    #removes from users items
+    if logged_in?
+    user_items.destroy(user_items.find_by(item_id: @item.id))
+    end
     redirect_to cart_path
   end
 
