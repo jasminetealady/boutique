@@ -1,3 +1,69 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.account-order-items {
+  display: flex;
+  flex-direction: column;
+  border: solid 1px lightgrey;
+  border-radius: 5px;
+  width: 30rem;
+  margin-top: 3rem;
+  margin-left: 5rem;
+}
+
+.account-order-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 3rem;
+  overflow: hidden;
+}
+
+.account-order-item-image {
+  width: 20%;
+}
+
+.account-order-item-image img {
+  object-fit: contain;
+  width: 100%;
+  max-height: 100%;
+  border-radius: 5px;
+  border: solid 1px lightgrey;
+}
+
+.account-order-item p {
+  font-weight: bold;
+  font-family: "Raleway";
+  margin-left: 1.5rem;
+}
+
+.account-order-item {
+  margin-top: 1rem;
+}
+
+.account-order-subtotal {
+  font-weight: bold;
+  font-family: "Raleway";
+  font-size: 1rem;
+  margin-left: 3rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.account-order-purchased {
+  font-weight: bold;
+  font-family: "Raleway";
+  font-size: 1rem;
+  margin-left: 3rem;
+  margin-top: 3rem;
+  text-decoration: underline;
+}
+
+.account-h1 {
+  font-family: "Raleway";
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}

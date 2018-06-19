@@ -1,10 +1,10 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user, :current_cart, :logged_in?
+  helper_method :current_user, :current_cart, :logged_in?, :cart_total, :user_items, :clear_cart
 
 private
 
   def logged_in?
-    current_user.present
+    current_user.present?
   end
 
   def user_params
@@ -32,18 +32,29 @@ private
   def associate_cart_items_to_user
     if current_cart
       current_cart.each do |item|
-        item["cart_id"] = current_user.cart.id
-        item = CartItem.find_by(item_id: item["item_id"])
-        item.cart_id = current_user.cart.id
-        item.save
+        #adds users cart id in session
+        item["cart_id"] = current_user.cart.try(:id)
+        #adds users cart id to cart item that went into session
+        current_user.cart.cart_items.create(item_id: item["item_id"] )
+        # item = CartItem.find_by(item_id: item["item_id"])
+        # item.cart_id = current_user.cart.try(:id)
+        # item.save
       end
     end
   end
 
   def cart_total
     cart_prices = []
-    current_cart.each{|i| cart_prices << Item.find_by(id: i["item_id"]).price * i["quantity"].to_i}
+    current_cart.each{|i| cart_prices << Item.find(i["item_id"]).price * i["quantity"].to_i}
     cart_prices.sum
+  end
+
+  def user_items
+    current_user.cart.cart_items
+  end
+
+  def clear_cart
+    session.delete :cart
   end
 
 

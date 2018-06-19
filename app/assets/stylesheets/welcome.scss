@@ -59,8 +59,6 @@
 }
 
 .top-items {
-  height: 35rem;
-  // blue background-color: #d6e4e8;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -74,21 +72,5 @@
 .top-items-items {
   display: flex;
   justify-content: center;
-}
-
-footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 20rem;
-  width: 100%;
-  text-transform: uppercase;
-  font-size: .8rem;
-  color: #ccbac4;
-  font-family: "Avenir Next";
-}
-
-footer a {
-  padding-top: 1rem;
+  align-items: baseline;
 }

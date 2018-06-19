@@ -10,7 +10,8 @@ Rails.application.routes.draw do
 
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
-  
+  get '/account', to: 'users#show'
+
   resources :users do
     resources :orders
   end
@@ -29,6 +30,7 @@ Rails.application.routes.draw do
 
   #Cart
   get '/cart', to: 'carts#show'
+  get '/clearcart', to: 'carts#destroy'
 
   #Orders/Checkout
   get '/checkout', to: 'orders#new'

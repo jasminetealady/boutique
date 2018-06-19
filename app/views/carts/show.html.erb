@@ -6,7 +6,9 @@
     <div class="shop-item-cart">
 
         <% @item = Item.find(item["item_id"])%>
-        <% @cart_item = CartItem.find_by(item_id: @item.id)%>
+        <% if logged_in? %>
+        <% @cart_item = user_items.find_by(item_id: @item.id)%>
+        <%end%>
 
         <div class="shop-item-cart-image"><%= image_tag @item["picture"] %></div>
 
@@ -16,8 +18,8 @@
         </div>
 
             <%=form_tag({controller: "items", action: "update", id: @item}, method: "put") do %>
-              <%= label_tag "Quantity: " %>
-              <%= text_field_tag :quantity, @cart_item.quantity %>
+              <%= label_tag "Quantity:" %>
+              <%= text_field_tag :quantity, item["quantity"] %>
               <%= submit_tag "Update Quantity" %>
             <%end%>
 
@@ -36,9 +38,5 @@
 
   <p><%= link_to "Checkout", new_user_order_path(@user.id) if @user %></p>
   <p><%= link_to "Log In to Complete Order", login_path if !@user %></p>
-
-  <% if flash[:message] %>
-    <%= flash[:message]%>
-  <%end%>
 
 </div>

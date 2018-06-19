@@ -63,15 +63,16 @@
   margin-top: 1rem;
 }
 
-.order-address input[type=text], .order-address input[type=number] {
+.order-address input[type=text] {
   border-radius: 5px;
   height: 1.5rem;
-  width: 15rem;
   padding: .5rem 0;
   border: solid 1px #ccbac4;
   color: #ccbac4;
   text-align: center;
   width: 80%;
+  font-size: .8rem;
+  font-family: "Avenir Next"
 }
 
 .order-address input[type=submit] {
@@ -105,7 +106,7 @@
 
 .order-save-address {
   font-weight: bold;
-  margin-top: 2rem;
+  margin: 2rem 0;
 }
 
 
@@ -118,4 +119,16 @@
 
 .order-name input[type=text]{
   width: 48%;
+}
+
+select {
+  border: solid 1px #ccbac4;
+  border-radius: 5px;
+  background-color: white;
+  width: 80%;
+  text-align: center;
+  color: #8e5e78;
+  font-family: "Avenir Next";
+  height: 2.5rem;
+  font-size: .8rem;
 }

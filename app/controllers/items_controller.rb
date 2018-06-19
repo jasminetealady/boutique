@@ -19,9 +19,11 @@ class ItemsController < ApplicationController
 
   def update
     #updates users cart.cart_items
-    @item = CartItem.find_by(item_id: item_params[:id])
+    if logged_in?
+    @item = user_items.find_by(item_id: item_params[:id])
     @item.quantity = item_params[:quantity]
     @item.save
+    end
     #updates session cart items
     item = current_cart.find{|i| i["item_id"] == item_params[:id].to_i}
     item["quantity"] = item_params[:quantity]
@@ -31,7 +33,7 @@ class ItemsController < ApplicationController
   def destroy
     @item = Item.find(params[:id])
     current_cart.delete_if {|item| item["item_id"] == @item.id}
-    current_user.cart.cart_items.destroy(CartItem.find_by(item_id: @item.id)) if current_user
+    user_items.destroy(CartItem.find_by(item_id: @item.id)) if current_user
     redirect_to cart_path
   end
 

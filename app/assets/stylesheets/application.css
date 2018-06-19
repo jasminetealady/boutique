@@ -18,12 +18,13 @@
 
  html {
    font-size: 16px;
-   height: 100%;
  }
 
   body {
     font-family: "Avenir";
     color: #8e5e78;
+    min-height: 100%;
+    width: 100%;
   }
 
   .main {
@@ -103,4 +104,25 @@
     padding: .75rem;
     color: #d18ab0;
     cursor: pointer;
+  }
+
+  footer {
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 20rem;
+    width: 100%;
+    text-transform: uppercase;
+    font-size: .8rem;
+    color: #ccbac4;
+    font-family: "Avenir Next";
+    margin-top: 5rem;
+    background-color: #ccbac4;
+  }
+
+  footer a {
+    padding-top: 1rem;
+    color: white;
   }

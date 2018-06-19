@@ -15,5 +15,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @orders = current_user.orders.last(3)
+    @addresses = current_user.addresses
+  end
+
 
 end

@@ -6,6 +6,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -23,9 +24,10 @@
         <%end%>
         <a href="/shop">shop</a>
         <%if current_user%>
+        <a href="/account">account</a>
         <a href="/logout">log out</a>
         <%end%>
-        <a href="/cart">cart (<%=current_cart.count%> items)</a>
+        <a href="/cart"><i class="fas fa-shopping-bag fa-lg"></i> (<%=current_cart.count%>)</a>
       </nav>
     </header>
     <hr />
@@ -36,14 +38,16 @@
 
 
 
-      <footer>
-        <a href="">About Us</a>
-        <a href="">Contact Us</a>
-        <a href="">Affiliate Program</a>
-        <a href="">Blog</a>
-        <a href="">FAQ</a>
-        <a href="">Terms & Conditions</a>
-      </footer>
+        <footer>
+          <a href="">About Us</a>
+          <a href="">Contact Us</a>
+          <a href="">Affiliate Program</a>
+          <a href="">Blog</a>
+          <a href="">FAQ</a>
+          <a href="">Terms & Conditions</a>
+        </footer>
+
+
   </body>
 
 </html>
