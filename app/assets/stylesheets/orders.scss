@@ -118,7 +118,8 @@
 }
 
 .order-name input[type=text]{
-  width: 48%;
+  width: 98%;
+  margin: .1rem;
 }
 
 select {
@@ -131,4 +132,11 @@ select {
   font-family: "Avenir Next";
   height: 2.5rem;
   font-size: .8rem;
+}
+
+.field_with_errors {
+  width: inherit;
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }

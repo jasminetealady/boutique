@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :orders
   has_many :reviews
   has_one :cart
+  validates :email, uniqueness: true
 
   def self.find_or_create_by_omniauth(auth)
     where(email: auth["info"]["email"]).first_or_create do |user|

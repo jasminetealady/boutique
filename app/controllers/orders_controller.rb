@@ -5,6 +5,8 @@ class OrdersController < ApplicationController
     @total = cart_total
     @order = Order.new(user_id: params[:user_id])
     @cart_items = user_items
+    @user = current_user
+    #please note the reason I don't use these in the view is they don't work after 'render :new' post validation failure-- can demo if need be, had them before implementing validation errors
   end
 
   def create
@@ -13,23 +15,25 @@ class OrdersController < ApplicationController
     else
       @address = current_user.addresses.build(address_params)
     end
-    @order = current_user.orders.build(order_params)
-    @order.address = @address
-    @order.total = cart_total
-    @order.cart_items = user_items
-    @order.save
-    if @order.save_address
-      current_user.addresses << @address
-    end
-    session.delete :cart
-    #dissociates cart_items from cart and therefore user, but accessible via orders
-    user_items.delete_all
-    redirect_to root_path
+      # byebug
+      if @address.valid?
+        @order = current_user.orders.build(order_params)
+        @order.address = @address
+        @order.total = cart_total
+        @order.cart_items = user_items
+        @order.save
+        if @order.save_address
+          current_user.addresses << @address
+        end
+        session.delete :cart
+        #dissociates cart_items from cart and therefore user, but accessible via orders
+        user_items.delete_all
+        redirect_to '/account'
+      else
+        render :new
+      end
   end
 
-  def show
-
-  end
 
 
   private
@@ -38,6 +42,6 @@ class OrdersController < ApplicationController
     end
 
     def address_params
-      params.require(:address).permit(:first_name, :last_name, :company, :address, :city, :state, :apt_or_suite, :zip_code, :phone_number)
+      params.require(:address).permit(:first_name, :last_name, :company, :address, :city, :state, :apt_or_suite, :zip_code, :phone_number, :country)
     end
 end

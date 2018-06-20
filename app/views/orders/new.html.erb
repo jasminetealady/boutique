@@ -12,33 +12,35 @@
 
   <div class="order-name">
 
-    <%= f.text_field :first_name, placeholder: "First Name" %>
+    <%= f.text_field :first_name, value: @address.errors[:first_name], placeholder: "First Name" %>
 
-    <%= f.text_field :last_name, placeholder: "Last Name" %>
+    <%= f.text_field :last_name, value: @address.errors[:last_name], placeholder: "Last Name" %>
+
   </div>
 
 
   <%= f.text_field :company, placeholder: "Company (Optional)" %><br />
 
-  <%= f.text_field :address, placeholder: "Address", as: :select %><br />
+  <%= f.text_field :address, value: @address.errors[:address], placeholder: "Address", as: :select %><br />
 
   <%= f.text_field :apt_or_suite, placeholder: "Apt/Suite" %><br />
 
-  <%= f.text_field :city, placeholder: "City" %><br />
+  <%= f.text_field :city, value: @address.errors[:city], placeholder: "City" %><br />
 
-  <%= f.text_field :state, placeholder: "State" %><br />
+  <%= f.text_field :state, value: @address.errors[:state], placeholder: "State" %><br />
 
-  <%= f.text_field :zip_code, placeholder: "Zip Code" %><br />
+  <%= f.text_field :country, value: @address.errors[:country], placeholder: "Country" %><br />
+
+  <%= f.text_field :zip_code, value: @address.errors[:zip_code].first, placeholder: "Zip Code" %><br />
 
   <%= f.text_field :phone_number, placeholder: "Phone Number(Optional)" %></p><br />
   <br />
 
-  <%= form_for [current_user, @order] do |f| %>
+  <%= form_for [current_user, Order.new(user_id: params[:user_id])] do |f| %>
     <div class="order-save-address">
       <%= f.label :save_address, "Would you like to save this address for future orders?" %>
       <%= f.check_box :save_address %>
     </div>
-
 
   <% if current_user.addresses.present? %>
   <h3>or</h3>
@@ -46,14 +48,16 @@
   <%end%>
 
   <%= f.submit "Submit Order" %>
+
 <%end%>
 
 <%end%>
 </div>
 
+
 <div class="order-items">
 
-    <% @cart_items.each do |item| %>
+    <% user_items.each do |item| %>
       <div class="order-item">
         <% @item = Item.find(item["item_id"])%>
         <div class="order-item-image"><%= image_tag @item.picture%></div>
@@ -69,10 +73,8 @@
     <%end%>
 
 
-
   <div class="order-subtotal">
-    <h3>Subtotal: <%= number_to_currency(@total) %></h3>
-
+    <h3>Subtotal: <%= number_to_currency(cart_total) %></h3>
   </div>
 </div>
 
