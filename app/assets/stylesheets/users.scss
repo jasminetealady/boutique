@@ -67,3 +67,70 @@
   font-size: 1.5rem;
   margin-top: 2rem;
 }
+
+
+/*Signup Page*/
+
+.signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+}
+
+.signup form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.signup form input[type=text], .signup form input[type=password]  {
+  border-radius: 5px;
+  height: 1rem;
+  padding: .5rem 0;
+  border: solid 1px #ccbac4;
+  color: #ccbac4;
+  text-align: center;
+  width: 100%;
+  font-size: .8rem;
+  font-family: "Avenir Next"
+}
+
+.signup form input[type=submit] {
+  border: 1px solid #8e5e78;
+  border-radius: 3px;
+  padding: .3rem;
+  text-align: center;
+  background-color: #8e5e78;
+  font-size: 1rem;
+  color: white;
+  font-family: "Avenir Next";
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.signup a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #3B5998;
+  margin-top: 1rem;
+}
+
+.signup p {
+  margin-bottom: 2rem;
+  text-align: center;
+  width: 100%;
+}
+
+.signup label {
+  text-align: center;
+}
+
+.signup h1 {
+  margin-bottom: 2rem;
+  font-weight: 600;
+  font-family: "Raleway";
+}

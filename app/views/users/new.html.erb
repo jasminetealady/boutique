@@ -1,24 +1,33 @@
-<p>Signup</p>
+<div class="login-wrapper">
+
+<div class="signup">
+
+
+<h1>Sign Up</h1>
 
 <%= form_for @user, url: signup_path do |f| %>
 
-<p><%= f.label :first_name, "First Name" %><br />
-<%= f.text_field :first_name %></p>
+<p>
+<%= f.text_field :first_name, placeholder: "First Name" %></p>
 
-<p><%= f.label :last_name, "Last Name" %><br />
-<%= f.text_field :last_name %></p>
+<p>
+<%= f.text_field :last_name, placeholder: "Last Name" %></p>
 
-<p><%= f.label :email %><br />
-<%= f.text_field :email %></p>
+<p>
+<%= f.text_field :email, placeholder: "example@example.com" %></p>
 
-<p><%= f.label :password %><br />
-<%= f.password_field :password %></p>
+<p>
+<%= f.password_field :password, placeholder: "Password" %></p>
 
 <%= f.submit "Sign Up" %>
 <%end%>
 
-<p><a href='/auth/facebook'>Login with Facebook</a></p>
+<p><a href='/auth/facebook'><i class="fab fa-facebook-square fa-2x"></i><br />Login with Facebook</a></p>
 
 <% if flash[:message] %>
 <p><%= flash[:message] %></p>
 <%end%>
+
+</div>
+
+</div>

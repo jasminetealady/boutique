@@ -1,13 +1,15 @@
-<div class="">
-  <p>Login</p>
+<div class="login-wrapper">
 
+<div class="login">
+
+  <h1>Log In</h1>
   <%= form_for @user, url: login_path do |f| %>
 
-    <%= f.label :email, "Email" %><br />
-    <%= f.text_field :email %><br />
 
-    <%= f.label :password, "Password" %><br />
-    <%= f.password_field :password %><br />
+    <%= f.text_field :email, placeholder: "Email" %><br />
+
+
+    <%= f.password_field :password, placeholder: "Password" %><br />
     <%= f.submit "Log In" %>
 
   <%end%>
@@ -17,6 +19,8 @@
     <%= flash[:message] %>
   <%end%>
 
-  <p><a href='/auth/facebook'>Login with Facebook</a></p>
+  <a href='/auth/facebook'><i class="fab fa-facebook-square fa-2x"></i><br />Login with Facebook</a>
+
+</div>
 
 </div>

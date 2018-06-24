@@ -5,10 +5,76 @@
     </div>
     <div class="shop-item-show-text">
       <h3 class="shop-item-show-title"><%= @item.name %></h3>
+      <br />
+
+        <%if @item.reviews.present? %>
+        <div class="rating">
+          <% @item.average_rating.times do %>
+          <i class="fas fa-star"></i>
+          <%end%><br /><br />
+          </div>
+        <%end%>
+
+
       <p><%= number_to_currency(@item.price) %></p>
       <p><%= @item.description %></p>
       <%= link_to "Add to Cart", {controller: "items", action: "create", id: @item}, method: "post", class: "add-to-cart"%></a>
     </div>
 
   </div>
+
 </div>
+
+<% if logged_in? %>
+<div class="review-wrapper">
+
+  <div class="review">
+    <h1>Review This Product</h1><br />
+    <%= form_for @review, url: {controller: 'reviews', action: 'create', id: @item} do |f| %>
+
+      <%= f.label :stars %><br /><br />
+
+      <%= f.label :stars, "1", class: "stars" %>
+      <%= f.radio_button :stars, 1 %>
+
+      <%= f.label :stars, "2", class: "stars" %>
+      <%= f.radio_button :stars, 2 %>
+
+      <%= f.label :stars, "3", class: "stars" %>
+      <%= f.radio_button :stars, 3 %>
+
+      <%= f.label :stars, "4", class: "stars" %>
+      <%= f.radio_button :stars, 4 %>
+
+      <%= f.label :stars, "5", class: "stars" %>
+      <%= f.radio_button :stars, 5 %><br /><br />
+
+
+      <%= f.text_area :review %><br />
+
+      <%= f.submit "Submit Review" %>
+    <%end%>
+
+  </div>
+</div>
+<%end%>
+
+<%if @item.reviews.present? %>
+<div class="review-wrapper">
+  <% @item.reviews.each do |review| %>
+  <div class="review user-review">
+  <span class="review-name"><%= User.find(review.user_id).first_name %>'s Review</span><br />
+
+  <div class="rating">
+    <% review.stars.times do %>
+    <i class="fas fa-star"></i>
+    <%end%><br /><br />
+  </div>
+
+
+  <p><%= review.review %></p><br />
+  </div>
+  <br />
+  <%end%>
+  </div>
+  <%end%>

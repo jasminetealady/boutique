@@ -4,6 +4,14 @@
     <div class="shop-item">
       <%= image_tag item.picture %>
       <p><%= link_to item.name, item_path(item) %></p>
+      <br />
+      <%if item.reviews.present? %>
+      <div class="rating">
+        <% item.average_rating.times do %>
+        <i class="fas fa-star fa-xs"></i>
+        <%end%>
+        </div>
+      <%end%>
       <p><%= number_to_currency(item.price) %></p>
 
     </div>

@@ -21,10 +21,22 @@
  }
 
   body {
-    font-family: "Avenir";
+    font-family: "Avenir Next";
     color: #8e5e78;
     min-height: 100%;
     width: 100%;
+  }
+
+  .luxe-logo {
+    width: 3rem;
+  }
+
+  .logo {
+    display: flex;
+    align-items: baseline;
+    width: 20%;
+    height: 5rem;
+    padding-left: 15rem;
   }
 
   .main {
@@ -91,7 +103,7 @@
   }
 
   header h1 {
-    padding-left: 15rem;
+    padding-left: 1rem;
     font-family: "Sacramento";
     font-weight: 300;
     font-size: 3.5rem;
@@ -108,6 +120,8 @@
 
   footer {
     bottom: 0;
+    top: 10rem;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -118,7 +132,7 @@
     font-size: .8rem;
     color: #ccbac4;
     font-family: "Avenir Next";
-    margin-top: 5rem;
+    margin-top: 0rem;
     background-color: #ccbac4;
   }
 

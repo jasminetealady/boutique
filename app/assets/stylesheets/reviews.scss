@@ -1,0 +1,63 @@
+
+
+.review-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.user-review {
+  border: solid 1px lightgrey;
+  border-radius: 5px;
+  width: 60%;
+  padding: 2rem;
+}
+
+.user-review p {
+  line-height: 2;
+}
+
+.review form {
+  text-align: center;
+}
+
+.review form [type=submit] {
+  border: 1px solid #8e5e78;
+  border-radius: 3px;
+  padding: .8rem;
+  // width: 20%;
+  text-align: center;
+  background-color: #8e5e78;
+  font-size: .8rem;
+  margin-top: 3rem;
+  color: #ccbac4;
+  font-family: "Raleway";
+  text-transform: uppercase;
+}
+
+.review form textarea {
+  width: 30rem;
+  height: 5rem;
+  border-radius: 3px;
+  border-color: lightgrey;
+}
+
+.stars {
+  font-size: .5rem;
+}
+
+.rating {
+  color: #ffafaf;
+}
+
+.review-name {
+  font-weight: 600;
+}

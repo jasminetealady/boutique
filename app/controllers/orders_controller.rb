@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :require_login
 
   def new
     @address = Address.new(user_id: params[:user_id])

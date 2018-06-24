@@ -40,4 +40,7 @@ Rails.application.routes.draw do
   get '/shop', to: 'items#index'
   resources :items, only: [:show]
 
+  #Reviews
+  resources :reviews, only: [:create]
+
 end

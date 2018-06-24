@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
     if auth
       user = User.find_or_create_by_omniauth(auth)
       current_user(user)
+      associate_cart_items_to_user
       redirect_to root_path
     else
       user = User.find_by(email: user_params[:email])
@@ -20,7 +21,7 @@ class SessionsController < ApplicationController
       redirect_to root_path
       end
     else
-      flash[:message] = "Incorrect login"
+      flash[:message] = "Incorrect login information"
       redirect_to login_path
     end
     end
