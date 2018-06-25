@@ -29,7 +29,7 @@
         <a href="/account">account</a>
         <a href="/logout">log out</a>
         <%end%>
-        <a href="/cart"><i class="fas fa-shopping-bag fa-lg"></i> (<%=current_cart.count%>)</a>
+        <a href="/cart"><i class="fas fa-shopping-bag fa-lg"></i> (<%=number_to_currency(cart_total)%>)</a>
       </nav>
     </header>
     <hr />
