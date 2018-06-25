@@ -26,9 +26,3 @@
 
 # Ignore env
 .env
-
-# Ignore db
-
-/config/database.yml
-database.yml
-config/database.yml
