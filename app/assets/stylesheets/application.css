@@ -119,7 +119,7 @@
   }
 
   footer {
-    /* top: 25rem; */
+    margin-top: 10rem;
     position: relative;
     display: flex;
     justify-content: center;
