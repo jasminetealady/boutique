@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
     else
       @address = current_user.addresses.build(address_params)
     end
-      # byebug
+
       if @address.valid?
         @order = current_user.orders.build(order_params)
         @order.address = @address
@@ -27,7 +27,6 @@ class OrdersController < ApplicationController
           current_user.addresses << @address
         end
         session.delete :cart
-        #dissociates cart_items from cart and therefore user, but accessible via orders
         user_items.delete_all
         redirect_to '/account'
       else

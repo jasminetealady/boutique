@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
       redirect_to root_path
       end
     else
-      flash[:message] = "Incorrect login information"
+      flash[:message] = "* Incorrect login information"
       redirect_to login_path
     end
     end

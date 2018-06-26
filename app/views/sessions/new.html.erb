@@ -6,20 +6,24 @@
   <%= form_for @user, url: login_path do |f| %>
 
 
-    <%= f.text_field :email, placeholder: "Email" %><br />
+    <p><%= f.text_field :email, placeholder: "Email" %></p>
 
 
-    <%= f.password_field :password, placeholder: "Password" %><br />
-    <%= f.submit "Log In" %>
+    <p><%= f.password_field :password, placeholder: "Password" %></p>
+    <p><%= f.submit "Log In" %></p>
 
   <%end%>
 
   <br />
+
+  <a href='/auth/facebook'><i class="fab fa-facebook-square fa-2x"></i><br />Login with Facebook</a>
+
+
+  <br />
+
   <%if flash[:message] %>
     <%= flash[:message] %>
   <%end%>
-
-  <a href='/auth/facebook'><i class="fab fa-facebook-square fa-2x"></i><br />Login with Facebook</a>
 
 </div>
 
