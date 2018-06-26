@@ -21,7 +21,7 @@
  }
 
   body {
-    font-family: "Avenir Next";
+    font-family: "Avenir Next", "Lato", sans-serif;
     color: #8e5e78;
     min-height: 100%;
     width: 100%;
@@ -91,7 +91,7 @@
     text-transform: uppercase;
     font-size: .8rem;
     color: #ccbac4;
-    font-family: "Avenir Next";
+    font-family: "Avenir Next", "Lato", sans-serif;
   }
 
   a:hover {
@@ -130,7 +130,7 @@
     text-transform: uppercase;
     font-size: .8rem;
     color: #ccbac4;
-    font-family: "Avenir Next";
+    font-family: "Avenir Next", "Lato", sans-serif;
     background-color: #ccbac4;
   }
 
