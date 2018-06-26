@@ -40,3 +40,9 @@
   <p><%= link_to "Log In to Complete Order", login_path if !@user %></p>
 
 </div>
+
+<% if session[:cart].empty? %>
+<div class="empty">
+  
+</div>
+<%end%>

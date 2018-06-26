@@ -21,3 +21,9 @@
       </div>
   </div>
 <%end%>
+
+<% if current_user.orders.empty? %>
+<div class="empty">
+
+</div>
+<%end%>
