@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   #Home
   root 'welcome#home'
+  get '/newpage', to: 'welcome#new_page'
 
   #Facebook Omniauth
   get '/auth/facebook/callback', to: 'sessions#create'
@@ -22,10 +23,6 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   #Items
-  # get '/items/:id/add_to_cart', to: 'items#add_to_cart'
-  # get '/items/:id/remove_from_cart', to: 'items#remove_from_cart'
-  # get '/items/:id/update_quantity', to: 'items#update_quantity'
-
   resources :items
 
   #Cart

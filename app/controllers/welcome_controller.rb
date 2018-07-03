@@ -4,4 +4,8 @@ class WelcomeController < ApplicationController
     @items = Review.top_reviewed.first(3)
   end
 
+  def new_page
+    @most_reviewed = Item.most_reviewed.first
+  end
+
 end
