@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
 
   def home
-    @items = Item.top_reviewed.first(3)
+    @items = Review.top_reviewed.first(3)
   end
-  
+
 end

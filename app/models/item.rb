@@ -9,10 +9,25 @@ class Item < ApplicationRecord
     self.reviews.average(:stars).to_i
   end
 
-  #scope method
-  def self.top_reviewed
-    all.each do |item|
-      item.reviews.where(stars: 5)
-    end
-  end
+  #scope method re-factored in Review
+  # def self.top_reviewed
+  #   top_reviewed = all.map do |item|
+  #     if item.reviews.present?
+  #       item.reviews.where(stars: 5)
+  #     end
+  #   end
+  #
+  #   top_items = []
+  #
+  #   top_reviewed.each do |review_collection|
+  #     if review_collection.present?
+  #     item = Item.find(review_collection.first.item_id)
+  #     top_items << item
+  #     end
+  #   end
+  #
+  #   top_items
+  # end
+
+
 end
