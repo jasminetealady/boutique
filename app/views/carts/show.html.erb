@@ -19,7 +19,7 @@
 
             <%=form_tag({controller: "items", action: "update", id: @item}, method: "put") do %>
               <%= label_tag "Quantity:" %>
-              <%= text_field_tag :quantity, item["quantity"] %>
+              <%= number_field_tag :quantity, item["quantity"] %>
               <%= submit_tag "Update Quantity" %>
             <%end%>
 
@@ -43,6 +43,6 @@
 
 <% if session[:cart].empty? %>
 <div class="empty">
-  
+
 </div>
 <%end%>
