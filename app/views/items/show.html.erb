@@ -59,8 +59,12 @@
 </div>
 <%end%>
 
+
+
 <%if @item.reviews.present? %>
 <div class="review-wrapper">
+  <button id="show-reviews">Show Reviews</button>
+  
   <% @item.reviews.each do |review| %>
   <div class="review user-review">
   <span class="review-name"><%= User.find(review.user_id).first_name %>'s Review</span><br />
