@@ -8,9 +8,27 @@ function Review(attributes) {
   this.review = attributes.review;
 }
 
+function Item(attributes) {
+  this.id = attributes.id;
+  this.name = attributes.name;
+  this.description = attributes.description;
+  this.price = attributes.price;
+  this.picture = attributes.picture
+}
+
+Item.prototype.setId = function(id){
+  $("h3.shop-item-show-title").data("id", id)
+}
+
 
 Review.prototype.doAThing = function() {
+  let html = `<div class="review user-review">
+  <span class="review-name">${newReview.userFirstName}'s Review</span><br/>
+  <div id="rating-js-${newReview.id}" class="rating"></div><br/>
+  <p>${newReview.review}</p><br />
+  </div>`
 
+  return html
 }
 
 function showReviews() {
@@ -47,20 +65,30 @@ function showReviews() {
 }
 
 let itemArray;
+let i = 0;
 
 function nextItem(){
   const itemId = $("h3.shop-item-show-title").data("id")
 
   $.get('/items.json', function(response){
     itemArray = response.map(x => x.id)
-    let currentItemIndex = itemArray.indexOf(itemId)
-    itemArray.splice(currentItemIndex, 1)
-    console.log(itemArray)
-    let i = 0;
-  
+    // let currentItemIndex = itemArray.indexOf(itemId)
+    // itemArray.splice(currentItemIndex, 1)
+    // console.log(itemArray)
+    
       $.get(`/items/${itemArray[i]}.json`, function(resp){
-        debugger
-        i++
+        const newItem = new Item(resp)
+        newItem.setId(this.id)
+        $(".shop-item-show-title").text(newItem.name)
+        $("#price").text("$" + newItem.price + "0")
+        $("#rating").empty().append("coming")
+        $("#description").text(newItem.description)
+        $(".shop-item-show-image img").attr('src', "/assets/" + newItem.picture);
+        if (i < itemArray.length - 1){
+          i++
+        } else {
+          i = 0;
+        }
       })
   })
 

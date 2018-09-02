@@ -8,7 +8,7 @@
       <br />
 
         <%if @item.reviews.present? %>
-        <div class="rating">
+        <div id="rating" class="rating">
           <% @item.average_rating.times do %>
           <i class="fas fa-star"></i>
           <%end%><br /><br />
@@ -16,8 +16,8 @@
         <%end%>
 
 
-      <p><%= number_to_currency(@item.price) %></p>
-      <p><%= @item.description %></p>
+      <p id="price"><%= number_to_currency(@item.price) %></p>
+      <p id="description"><%= @item.description %></p>
 
       <div class="shop-item-show-buttons">
       <%= link_to "Add to Cart", {controller: "items", action: "create", id: @item}, method: "post", class: "add-to-cart"%></a>
