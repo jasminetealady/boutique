@@ -14,6 +14,7 @@ function Item(attributes) {
   this.description = attributes.description;
   this.price = attributes.price;
   this.picture = attributes.picture
+  this.reviews = attributes.reviews_count
 }
 
 Item.prototype.setId = function(id){
@@ -68,20 +69,15 @@ let itemArray;
 let i = 0;
 
 function nextItem(){
-  const itemId = $("h3.shop-item-show-title").data("id")
-
+ 
   $.get('/items.json', function(response){
     itemArray = response.map(x => x.id)
-    // let currentItemIndex = itemArray.indexOf(itemId)
-    // itemArray.splice(currentItemIndex, 1)
-    // console.log(itemArray)
     
       $.get(`/items/${itemArray[i]}.json`, function(resp){
         const newItem = new Item(resp)
-        newItem.setId(this.id)
+        newItem.setId(newItem.id)
         $(".shop-item-show-title").text(newItem.name)
         $("#price").text("$" + newItem.price + "0")
-        $("#rating").empty().append("coming")
         $("#description").text(newItem.description)
         $(".shop-item-show-image img").attr('src', "/assets/" + newItem.picture);
         if (i < itemArray.length - 1){
@@ -89,6 +85,14 @@ function nextItem(){
         } else {
           i = 0;
         }
+        let totalStars = 0
+        resp.reviews.forEach(x => totalStars += x.stars )
+        let averageReview = Math.round(totalStars / resp.reviews.length)
+        $("#rating").empty()
+        for (let i = 0; i < averageReview; i++) {
+          $("#rating").append('<i class="fas fa-star"></i>')
+        }
+        
       })
   })
 
