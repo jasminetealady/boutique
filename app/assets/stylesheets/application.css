@@ -14,7 +14,6 @@
  *= require_self
  */
 
- $mauve: #ccbac4;
 
  html {
    font-size: 16px;
@@ -22,33 +21,29 @@
 
   body {
     font-family: "Avenir Next", "Lato", sans-serif;
-    color: #8e5e78;
+    color: #b1859d;
     min-height: 100%;
     width: 100%;
   }
 
-  .luxe-logo {
-    width: 3rem;
-  }
 
   .logo {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     width: 20%;
     height: 5rem;
-    padding-left: 15rem;
+    padding-left: 10rem;
   }
 
   .main {
    display: flex;
    flex-wrap: wrap;
    justify-content: space-around;
-   padding: 5rem;
    height: 100%;
   }
 
   .free-shipping {
-    background-color: #ccbac4;
+    background-color: #b1859d;
     height: 1.5rem;
     color: white;
     font-size: .7rem;
@@ -65,20 +60,12 @@
     width: 100%;
   }
 
-  hr {
-    width: 70%;
-    color: #ccbac4;
-    background-color: #ccbac4;
-    border: 0;
-    height: 1px;
-  }
-
 
   a {
     text-decoration: none;
     text-transform: uppercase;
     font-family: "Raleway";
-    color: #ccbac4;
+    color: #b1859d;
   }
 
   nav {
@@ -89,9 +76,11 @@
     padding-left: 1rem;
     text-decoration: none;
     text-transform: uppercase;
-    font-size: .8rem;
-    color: #ccbac4;
-    font-family: "Avenir Next", "Lato", sans-serif;
+    font-weight: 600;
+    font-size: .9rem;
+    color: #CFB2C2;
+    font-family: "Raleway" "Lato", sans-serif;
+    /* letter-spacing: .5px; */
   }
 
   a:hover {
@@ -105,9 +94,10 @@
   header h1 {
     padding-left: 1rem;
     font-family: "Sacramento";
+    text-decoration: underline;
     font-weight: 300;
-    font-size: 3.5rem;
-    color: #ccbac4;
+    font-size: 2.5rem;
+    color: #b1859d;
   }
 
   input[type=submit] {
@@ -131,7 +121,7 @@
     font-size: .8rem;
     color: #ccbac4;
     font-family: "Avenir Next", "Lato", sans-serif;
-    background-color: #ccbac4;
+    background-color: #b1859d;
   }
 
   footer a {
@@ -141,4 +131,35 @@
 
   .empty {
     height: 25rem;
+  }
+
+  @media only screen and (max-width: 855px){
+  
+    .logo {
+      padding: 3rem;
+    }
+   
+  }
+
+  @media only screen and (max-width: 733px){
+  
+    nav {
+      padding-right: 3rem;
+    }
+   
+  }
+
+  @media only screen and (max-width: 653px){
+  
+    header {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo {
+      width: 100%;
+      justify-content: center;
+    }
+   
   }

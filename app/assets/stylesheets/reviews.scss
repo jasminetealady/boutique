@@ -30,21 +30,22 @@
   text-align: center;
 }
 
-.review form [type=submit], #show-reviews {
-  border: 1px solid #8e5e78;
+.review form [type=submit] {
+  border: 1px solid #965E7C;
   border-radius: 3px;
   padding: .8rem;
   // width: 20%;
   text-align: center;
-  background-color: #8e5e78;
+  background-color: #965E7C;
   font-size: .8rem;
   margin-top: 3rem;
-  color: #ccbac4;
+  color: white;
   font-family: "Raleway";
   text-transform: uppercase;
 }
 
 .review form textarea {
+  // width: 30rem;
   width: 30rem;
   height: 5rem;
   border-radius: 3px;
@@ -61,4 +62,15 @@
 
 .review-name {
   font-weight: 600;
+}
+
+#show-reviews-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 600px){
+  .review form textarea{
+    width: 20rem;
+  }
 }

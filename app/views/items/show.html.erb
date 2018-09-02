@@ -4,7 +4,7 @@
       <%= image_tag @item.picture %>
     </div>
     <div class="shop-item-show-text">
-      <h3 class="shop-item-show-title"><%= @item.name %></h3>
+      <h3 data-id="<%= @item.id %>" class="shop-item-show-title"><%= @item.name %></h3>
       <br />
 
         <%if @item.reviews.present? %>
@@ -18,12 +18,22 @@
 
       <p><%= number_to_currency(@item.price) %></p>
       <p><%= @item.description %></p>
+
+      <div class="shop-item-show-buttons">
       <%= link_to "Add to Cart", {controller: "items", action: "create", id: @item}, method: "post", class: "add-to-cart"%></a>
+      <%if @item.reviews.present? %>
+        <a href="#" id="show-reviews">Show Reviews</a>
+      <%end%>
+        <a href="#" id="next-item">Next Item</a>
+      </div>
+
     </div>
 
   </div>
 
 </div>
+
+<div id="reviews-js" class="review-wrapper"></div>
 
 <% if logged_in? %>
 <div class="review-wrapper">
@@ -61,24 +71,3 @@
 
 
 
-<%if @item.reviews.present? %>
-<div class="review-wrapper">
-  <button id="show-reviews">Show Reviews</button>
-  
-  <% @item.reviews.each do |review| %>
-  <div class="review user-review">
-  <span class="review-name"><%= User.find(review.user_id).first_name %>'s Review</span><br />
-
-  <div class="rating">
-    <% review.stars.times do %>
-    <i class="fas fa-star"></i>
-    <%end%><br /><br />
-  </div>
-
-
-  <p><%= review.review %></p><br />
-  </div>
-  <br />
-  <%end%>
-  </div>
-  <%end%>

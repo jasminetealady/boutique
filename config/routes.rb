@@ -38,6 +38,6 @@ Rails.application.routes.draw do
   resources :items, only: [:show]
 
   #Reviews
-  resources :reviews, only: [:create]
+  resources :reviews, only: [:create, :index]
 
 end
