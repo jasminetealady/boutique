@@ -62,7 +62,7 @@ Order.prototype.format = function (order) {
 function showReviews() {
   const itemId = $("h3.shop-item-show-title").data("id")
 
-  if ($("#reviews-js").text().length === 0) {
+  if ($("#reviews-js").text().length === 0 && $("#rating").html() !== "") {
     $.get('/reviews', function (resp) {
     
       resp.forEach(function (x) {
@@ -96,13 +96,15 @@ let itemArray;
 let i = 0;
 
 function nextItem() {
-
+  
+  
   $.get('/items.json', function (response) {
     itemArray = response.map(x => x.id)
 
     $.get(`/items/${itemArray[i]}.json`, function (resp) {
       const newItem = new Item(resp)
       newItem.setId(newItem.id)
+      showReviews()
       $(".add-to-cart").attr("href", `/items?id=${newItem.id}`)
       $(".shop-item-show-title").text(newItem.name)
       $("#price").text("$" + newItem.price + "0")
@@ -120,9 +122,9 @@ function nextItem() {
       for (let i = 0; i < averageReview; i++) {
         $("#rating").append('<i class="fas fa-star"></i>')
       }
-
     })
   })
+
 }
 
 
@@ -131,12 +133,10 @@ function submitReview(form){
   const itemId = $("h3.shop-item-show-title").data("id")
   $("#review_id").val(itemId)
   const values = $(form).serialize()
-  $.post('/reviews.json', values)
-  $("form").remove()
-  $(".review").append(addForm())
-  const itemId2 = $("h3.shop-item-show-title").data("id")
-  $("#review_id").val(itemId2)
-
+  $.post('/reviews.json', values).done(function(resp){showReviews()})
+  $("input[type=radio").prop('checked', false)
+  $("textarea").val("Refresh to submit a new review")
+  
 }
 
 function showOrders() {
