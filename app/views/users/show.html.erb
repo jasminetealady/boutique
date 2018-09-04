@@ -1,29 +1,9 @@
-<h1 class="account-h1">Order History</h1>
-
-<% @orders.each do |order| %>
-  <div class="account-order-items">
-
-    <h4 class="account-order-purchased"><%=order.created_at.strftime("Purchased on %m/%d/%Y") %></h4>
-    <br /><br />
-
-    <% order.cart_items.each do |item| %>
-      <div class="account-order-item">
-        <% @item = Item.find(item.item_id) %>
-        <div class="account-order-item-image"><%= image_tag @item.picture %><br /></div>
-        <p>
-        <%= @item.name %><br />
-        <%= number_to_currency(@item.price) %><br />
-        </p>
-      </div>
-    <%end%>
-      <div class="account-order-subtotal">
-        <h3>Subtotal: <%= number_to_currency(order.total) %></h3>
-      </div>
-  </div>
-<%end%>
-
-<% if current_user.orders.empty? %>
-<div class="empty">
-
+<h1 class="account-h1">Your Account</h1>
+<div id="account-info">
+<br/><br/>
+<p>Name: <%= @user.first_name + " " + @user.last_name %></p>
+<p>Email: <%= @user.email %></p>
+<a id="see-orders" class="add-to-cart" href="#">See Order History</a>
 </div>
-<%end%>
+
+

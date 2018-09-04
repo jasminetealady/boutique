@@ -40,7 +40,7 @@
 
   <div class="review">
     <h1>Review This Product</h1><br />
-    <%= form_for @review, url: {controller: 'reviews', action: 'create', id: @item} do |f| %>
+    <%= form_for @review, url: {controller: 'reviews', action: 'create'} do |f| %>
 
       <%= f.label :stars %><br /><br />
 
@@ -61,6 +61,9 @@
 
 
       <%= f.text_area :review %><br />
+
+      
+      <%= hidden_field_tag 'id', '', :id => "review_id" %>
 
       <%= f.submit "Submit Review" %>
     <%end%>

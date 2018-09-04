@@ -25,6 +25,11 @@ class UsersController < ApplicationController
   def show
     @orders = current_user.orders.last(3)
     @addresses = current_user.addresses
+    @user = current_user
+    respond_to do |format|
+      format.html {render :show}
+      format.json {render json: @orders}
+    end
   end
 
 
