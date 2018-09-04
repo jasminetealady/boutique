@@ -103,7 +103,7 @@ function nextItem() {
       $(".shop-item-show-title").text(newItem.name)
       $("#price").text("$" + newItem.price + "0")
       $("#description").text(newItem.description)
-      $(".shop-item-show-image img").attr('src', "/assets/" + newItem.picture);
+      $(".shop-item-show-image img").attr('src', "app/assets/images/" + newItem.picture);
       if (i < itemArray.length - 1) {
         i++
       } else {
