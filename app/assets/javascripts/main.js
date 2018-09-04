@@ -1,4 +1,4 @@
-////FUNCTIONS//////
+////OBJECTS//////
 
 function Review(attributes) {
   this.id = attributes.id
@@ -23,6 +23,8 @@ function Order(attributes) {
   this.userId = attributes.user.id
   this.total = attributes.total
 }
+
+////PROTOTYPES//////
 
 Item.prototype.setId = function (id) {
   $("h3.shop-item-show-title").data("id", id)
@@ -53,6 +55,8 @@ Order.prototype.format = function (order) {
   </div>`
   return html
 }
+
+////FUNCTIONS//////
 
 
 function showReviews() {
@@ -121,14 +125,18 @@ function nextItem() {
   })
 }
 
+
 function submitReview(form){
+  
   const itemId = $("h3.shop-item-show-title").data("id")
   $("#review_id").val(itemId)
   const values = $(form).serialize()
   $.post('/reviews.json', values)
-  $("input[name='review[stars]']").forEach(x => $(`${x}`).val(""))
-  $("#review_review").val("")
- 
+  $("form").remove()
+  $(".review").append(addForm())
+  const itemId2 = $("h3.shop-item-show-title").data("id")
+  $("#review_id").val(itemId2)
+
 }
 
 function showOrders() {
@@ -172,9 +180,6 @@ function attachListeners() {
 
 
 /////PAGE LOADED-- ATTACH LISTENERS/////
-// $(document).ready(function () {
-//   attachListeners()
-// });
 
 $(document).on('turbolinks:load', function() {
 
