@@ -87,9 +87,13 @@ function showReviews() {
     })
     $("#show-reviews").text("Hide Reviews")
   } else {
-    $("#reviews-js").empty()
-    $("#show-reviews").text("Show Reviews")
+    hideReviews()
   }
+}
+
+function hideReviews(){
+  $("#reviews-js").empty()
+  $("#show-reviews").text("Show Reviews")
 }
 
 let itemArray;
@@ -104,7 +108,7 @@ function nextItem() {
     $.get(`/items/${itemArray[i]}.json`, function (resp) {
       const newItem = new Item(resp)
       newItem.setId(newItem.id)
-      showReviews()
+      hideReviews()
       $(".add-to-cart").attr("href", `/items?id=${newItem.id}`)
       $(".shop-item-show-title").text(newItem.name)
       $("#price").text("$" + newItem.price + "0")
