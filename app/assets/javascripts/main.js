@@ -30,9 +30,9 @@ Item.prototype.setId = function (id) {
   $("h3.shop-item-show-title").data("id", id)
 }
 
-Item.prototype.format = function (item) { 
-  const html = 
-  `<div class="account-order-item">
+Item.prototype.format = function (item) {
+  const html =
+    `<div class="account-order-item">
     <div class="account-order-item-image"> 
       <img src="/assets/${item.picture}"><br />
     </div>
@@ -45,8 +45,8 @@ Item.prototype.format = function (item) {
 }
 
 Order.prototype.format = function (order) {
-  const html = 
-  `<div class="account-order-items">
+  const html =
+    `<div class="account-order-items">
     <h4 class="account-order-purchased">Purchased on ${order.createdAt}</h4><br /><br />
     <div id="order-${order.id}"></div>
     <div class="account-order-subtotal">
@@ -58,7 +58,7 @@ Order.prototype.format = function (order) {
 
 ////FUNCTIONS//////
 
-  // Reviews //
+// Reviews //
 
 function showReviews() {
   //grabs data id of header that we set when we click next item
@@ -85,13 +85,12 @@ function showReviews() {
              <p>${newReview.review}</p><br />
             </div>`)
 
-            // for each number of stars, append the star icon
+          // for each number of stars, append the star icon
 
           for (let i = 0; i < stars; i++) {
             $(`#rating-js-${newReview.id}`).append('<i class="fas fa-star"></i>')
           }
         }
-
       })
     })
     $("#show-reviews").text("Hide Reviews")
@@ -100,39 +99,49 @@ function showReviews() {
   }
 }
 
-function hideReviews(){
+function hideReviews() {
   $("#reviews-js").empty()
   $("#show-reviews").text("Show Reviews")
 }
 
-  // Items //
+// Items //
 
 
 function nextItem() {
-  
+
   $.get('/items.json', function (response) {
 
     //creates array of all item ids to cycle through. i starts at current item index & increments by 1 until end of array 
     const itemArray = response.map(x => x.id)
-    
+
+    const itemId = $("h3.shop-item-show-title").data("id")
+
     // find index of current item in array & add 1 to get index of next item in array
-    let i = itemArray.indexOf($("h3.shop-item-show-title").data("id")) + 1
+    let i = itemArray.indexOf(itemId) + 1
 
-      // reset index to 0 if it goes above last index number
-    
-      if (i === itemArray.length) {
-        i = 0
-      }
+    // reset index to 0 if it goes above last index number
 
-      //get singular item
+    if (i === itemArray.length) {
+      i = 0
+    }
+
+    //get singular item
 
     $.get(`/items/${itemArray[i]}.json`, function (resp) {
       const newItem = new Item(resp)
 
       // sets data id of header to grab current item id in showReviews() && hides reviews from previous item
-      
+
       newItem.setId(newItem.id)
       hideReviews()
+
+      const itemId = $("h3.shop-item-show-title").data("id")
+
+      // update URL to reflect current itemId
+
+      window.history.pushState({
+        itemId: itemId
+      }, itemId, itemId);
 
       // updates link to add to cart so it reflects current item && updates item info
 
@@ -159,8 +168,7 @@ function nextItem() {
 
       if ($("#rating").html() === "") {
         $("#show-reviews").hide()
-      }
-      else {
+      } else {
         $("#show-reviews").show()
       }
     })
@@ -169,8 +177,8 @@ function nextItem() {
 }
 
 
-function submitReview(form){
-  
+function submitReview(form) {
+
   // grabbing current item id from header
   const itemId = $("h3.shop-item-show-title").data("id")
 
@@ -181,14 +189,16 @@ function submitReview(form){
   const values = $(form).serialize()
 
   // posts review passing in values & shows reviews
-  $.post('/reviews.json', values).done(function(resp){showReviews()})
+  $.post('/reviews.json', values).done(function (resp) {
+    showReviews()
+  })
 
   // unchecks the radio button
   $("input[type=radio]").prop('checked', false)
 
   // replaces text area with warning to refresh (can't submit form twice)
   $("textarea").val("Refresh to submit a new review")
-  
+
 }
 
 function showOrders() {
@@ -234,7 +244,7 @@ function attachListeners() {
 
 /////PAGE LOADED-- ATTACH LISTENERS/////
 
-$(document).on('turbolinks:load', function() {
+$(document).on('turbolinks:load', function () {
 
   attachListeners()
 
