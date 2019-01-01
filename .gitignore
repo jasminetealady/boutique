@@ -26,3 +26,6 @@
 
 # Ignore env
 .env
+
+#Ignore notes
+notes

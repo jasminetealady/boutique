@@ -76,12 +76,16 @@ function showReviews() {
           const newReview = new Review(x)
           const stars = newReview.stars
 
+          //append the review
+
           $("#reviews-js").append(
             `<div class="review user-review">
               <span class="review-name">${newReview.userFirstName}'s Review</span><br/>
              <div id="rating-js-${newReview.id}" class="rating"></div><br/>
              <p>${newReview.review}</p><br />
             </div>`)
+
+            // for each number of stars, append the star icon
 
           for (let i = 0; i < stars; i++) {
             $(`#rating-js-${newReview.id}`).append('<i class="fas fa-star"></i>')
@@ -103,21 +107,30 @@ function hideReviews(){
 
   // Items //
 
-// global vars for nextItem()
-
-let itemArray;
-let i = 0;
 
 function nextItem() {
   
   $.get('/items.json', function (response) {
-    //creates array of all item ids to cycle through. i starts at 0 & increments by 1 until end of array 
-    itemArray = response.map(x => x.id)
+
+    //creates array of all item ids to cycle through. i starts at current item index & increments by 1 until end of array 
+    const itemArray = response.map(x => x.id)
+    
+    // find index of current item in array & add 1 to get index of next item in array
+    let i = itemArray.indexOf($("h3.shop-item-show-title").data("id")) + 1
+
+      // reset index to 0 if it goes above last index number
+    
+      if (i === itemArray.length) {
+        i = 0
+      }
+
+      //get singular item
 
     $.get(`/items/${itemArray[i]}.json`, function (resp) {
       const newItem = new Item(resp)
 
       // sets data id of header to grab current item id in showReviews() && hides reviews from previous item
+      
       newItem.setId(newItem.id)
       hideReviews()
 
@@ -129,13 +142,6 @@ function nextItem() {
       $("#description").text(newItem.description)
       $(".shop-item-show-image img").attr('src', "/assets/" + newItem.picture);
 
-      // increment i by 1 to fetch next item
-
-      if (i < itemArray.length - 1) {
-        i++
-      } else {
-        i = 0;
-      }
 
       // calculate average rating & append number of stars based on #
 
@@ -148,7 +154,9 @@ function nextItem() {
         $("#rating").append('<i class="fas fa-star"></i>')
       }
 
+
       // hide show review button if there are no reviews, show if there are
+
       if ($("#rating").html() === "") {
         $("#show-reviews").hide()
       }
@@ -163,11 +171,22 @@ function nextItem() {
 
 function submitReview(form){
   
+  // grabbing current item id from header
   const itemId = $("h3.shop-item-show-title").data("id")
+
+  // setting value of hidden input to current item id
   $("#review_id").val(itemId)
+
+  // serialize the form & assign to var values to pass to post req
   const values = $(form).serialize()
+
+  // posts review passing in values & shows reviews
   $.post('/reviews.json', values).done(function(resp){showReviews()})
-  $("input[type=radio").prop('checked', false)
+
+  // unchecks the radio button
+  $("input[type=radio]").prop('checked', false)
+
+  // replaces text area with warning to refresh (can't submit form twice)
   $("textarea").val("Refresh to submit a new review")
   
 }
