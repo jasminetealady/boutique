@@ -1,22 +1,25 @@
-
 <div class="main">
   <% @items.each do |item| %>
-    <div class="shop-item">
-      <%= image_tag item.picture %>
-      <p><%= link_to item.name, item_path(item) %></p>
-      <br />
-      <%if item.reviews.present? %>
-      <div class="rating">
-        <% item.average_rating.times do %>
-        <i class="fas fa-star fa-xs"></i>
-        <%end%>
-        </div>
-        <%else%>
-        <br/>
+  <div class="shop-item">
+    <%= image_tag item.picture %>
+    <p>
+      <%= link_to item.name, item_path(item) %>
+    </p>
+    <br />
+    <%if item.reviews.present? %>
+    <div class="rating">
+      <% item.average_rating.times do %>
+      <i class="fas fa-star fa-xs"></i>
       <%end%>
-      <p><%= number_to_currency(item.price) %></p>
-
     </div>
+    <%else%>
+    <br />
+    <%end%>
+    <p>
+      <%= number_to_currency(item.price) %>
+    </p>
+
+  </div>
   <%end%>
 
 </div>

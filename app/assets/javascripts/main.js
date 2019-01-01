@@ -58,13 +58,18 @@ Order.prototype.format = function (order) {
 
 ////FUNCTIONS//////
 
+  // Reviews //
 
 function showReviews() {
+  //grabs data id of header that we set when we click next item
+
   const itemId = $("h3.shop-item-show-title").data("id")
+
+  // if there are reviews, get them
 
   if ($("#reviews-js").text().length === 0 && $("#rating").html() !== "") {
     $.get('/reviews', function (resp) {
-    
+
       resp.forEach(function (x) {
 
         if (x.item.id === itemId) {
@@ -96,35 +101,59 @@ function hideReviews(){
   $("#show-reviews").text("Show Reviews")
 }
 
+  // Items //
+
+// global vars for nextItem()
+
 let itemArray;
 let i = 0;
 
 function nextItem() {
   
-  
   $.get('/items.json', function (response) {
+    //creates array of all item ids to cycle through. i starts at 0 & increments by 1 until end of array 
     itemArray = response.map(x => x.id)
 
     $.get(`/items/${itemArray[i]}.json`, function (resp) {
       const newItem = new Item(resp)
+
+      // sets data id of header to grab current item id in showReviews() && hides reviews from previous item
       newItem.setId(newItem.id)
       hideReviews()
+
+      // updates link to add to cart so it reflects current item && updates item info
+
       $(".add-to-cart").attr("href", `/items?id=${newItem.id}`)
       $(".shop-item-show-title").text(newItem.name)
       $("#price").text("$" + newItem.price + "0")
       $("#description").text(newItem.description)
       $(".shop-item-show-image img").attr('src', "/assets/" + newItem.picture);
+
+      // increment i by 1 to fetch next item
+
       if (i < itemArray.length - 1) {
         i++
       } else {
         i = 0;
       }
+
+      // calculate average rating & append number of stars based on #
+
       let totalStars = 0
       resp.reviews.forEach(x => totalStars += x.stars)
       let averageReview = Math.round(totalStars / resp.reviews.length)
       $("#rating").empty()
+
       for (let i = 0; i < averageReview; i++) {
         $("#rating").append('<i class="fas fa-star"></i>')
+      }
+
+      // hide show review button if there are no reviews, show if there are
+      if ($("#rating").html() === "") {
+        $("#show-reviews").hide()
+      }
+      else {
+        $("#show-reviews").show()
       }
     })
   })
@@ -172,6 +201,7 @@ function attachListeners() {
 
   $("#new_review").submit(function (e) {
     e.preventDefault();
+    // this being the whole form
     submitReview(this)
   })
 

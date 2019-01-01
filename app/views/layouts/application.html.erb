@@ -1,63 +1,66 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Luxe Boutique</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= favicon_link_tag asset_path('favicon.ico'), :rel => 'icon', :type =>  'image/ico' %>
+<head>
+  <title>Luxe Boutique</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= favicon_link_tag asset_path('favicon.ico'), :rel => 'icon', :type =>  'image/ico' %>
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-    <link href="https://fonts.googleapis.com/css?family=Raleway|Sacramento|Lato" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
 
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-  </head>
+  <link href="https://fonts.googleapis.com/css?family=Raleway|Sacramento|Lato" rel="stylesheet">
+</head>
 
-  <body>
-    <div class="free-shipping">
-      <p>Free Shipping On All Orders $150 and Above!</p>
+<body>
+  <div class="free-shipping">
+    <p>Free Shipping On All Orders $150 and Above!</p>
+  </div>
+  <header>
+    <div class="logo">
+      <%# <%=image_tag "luxe-logo.png", class: "luxe-logo"%>
+      <h1>luxe boutique</h1>
     </div>
-    <header>
-      <div class="logo">
-        <%# <%=image_tag "luxe-logo.png", class: "luxe-logo"%><h1>luxe boutique</h1>
-      </div>
-      <nav>
-        <a href="/">home</a>
-        <% if !current_user %>
-        <a href="/login">log in</a>
-        <a href="/signup">sign up</a>
-        <%end%>
-        <a href="/shop">shop</a>
-        <%if current_user%>
-        <a href="/account">account</a>
-        <a href="/logout">log out</a>
-        <%end%>
-        <a href="/cart"><i class="fas fa-shopping-bag fa-lg"></i> (<%=number_to_currency(cart_total)%>)</a>
-      </nav>
-    </header>
-  
+    <nav>
+      <a href="/">home</a>
+      <% if !current_user %>
+      <a href="/login">log in</a>
+      <a href="/signup">sign up</a>
+      <%end%>
+      <a href="/shop">shop</a>
+      <%if current_user%>
+      <a href="/account">account</a>
+      <a href="/logout">log out</a>
+      <%end%>
+      <a href="/cart"><i class="fas fa-shopping-bag fa-lg"></i> (
+        <%=number_to_currency(cart_total)%>)</a>
+    </nav>
+  </header>
 
 
 
-      <%= yield %>
+
+  <%= yield %>
 
 
 
-        <footer>
-          <a href="">About Us</a>
-          <a href="">Contact Us</a>
-          <a href="">Affiliate Program</a>
-          <a href="">Blog</a>
-          <a href="">FAQ</a>
-          <a href="">Terms & Conditions</a>
-        </footer>
+  <footer>
+    <a href="">About Us</a>
+    <a href="">Contact Us</a>
+    <a href="">Affiliate Program</a>
+    <a href="">Blog</a>
+    <a href="">FAQ</a>
+    <a href="">Terms & Conditions</a>
+  </footer>
 
 
-  </body>
+</body>
 
 </html>
