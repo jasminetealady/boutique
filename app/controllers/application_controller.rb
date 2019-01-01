@@ -51,7 +51,8 @@ private
   end
 
   def clear_cart
-    session.delete :cart
+    session[:cart].clear
+    user_items.delete_all
   end
 
   def require_login

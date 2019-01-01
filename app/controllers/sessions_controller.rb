@@ -29,6 +29,7 @@ class SessionsController < ApplicationController
 
   def destroy
     if current_user
+      clear_cart
       session.delete :user_id
     end
     redirect_to '/'

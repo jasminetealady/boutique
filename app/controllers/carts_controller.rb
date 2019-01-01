@@ -7,8 +7,7 @@ class CartsController < ApplicationController
   end
 
   def destroy
-    session[:cart].clear
-    user_items.delete_all
+    clear_cart
     redirect_to root_path
   end
 end
