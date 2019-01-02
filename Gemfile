@@ -5,7 +5,6 @@ ruby '2.3.3'
 
 
 # gem 'rails_12factor', group: :production
-
 gem 'seed_dump'
 gem 'jquery-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
