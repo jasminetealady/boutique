@@ -23,8 +23,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @orders = current_user.orders.last(3)
-    @addresses = current_user.addresses
+    @orders = current_user.orders.order('created_at DESC')
     @user = current_user
     respond_to do |format|
       format.html {render :show}

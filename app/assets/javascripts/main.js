@@ -1,9 +1,5 @@
-function attachListeners() {
 
-  $("#item-index").click( e => {
-    e.preventDefault()
-    showItems()}
-  )
+function attachListeners() {
 
 
   $("#show-reviews").click(e => {

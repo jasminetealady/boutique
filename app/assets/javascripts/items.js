@@ -13,16 +13,7 @@ Item.prototype.setId = id => {
 
 Item.prototype.format = item => {
   // for order history page
-  const html =
-    `<div class="account-order-item">
-    <div class="account-order-item-image"> 
-      <img src="/assets/${item.picture}"><br />
-    </div>
-    <p>
-      ${item.name}<br/>
-      $${item.price}0<br/>
-    </p> 
-  </div>`
+  const html = `<div class="account-order-item"><div class="account-order-item-image"><img src="/assets/${item.picture}"><br /></div><p>${item.name}<br/>$${item.price}0<br/></p></div>`
   return html
 }
 

@@ -2,8 +2,9 @@ Rails.application.routes.draw do
 
   #Home
   root 'welcome#home'
-  get '/newpage', to: 'welcome#new_page'
-
+  resources :welcome
+  get '/newpage', to: 'welcome#new'
+ 
   #Facebook Omniauth
   get '/auth/facebook/callback', to: 'sessions#create'
 
@@ -23,7 +24,8 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   #Items
-  resources :items
+  get '/shop', to: 'items#index'
+  resources :items, only: [:show]
 
   #Cart
   get '/cart', to: 'carts#show'
@@ -32,10 +34,6 @@ Rails.application.routes.draw do
   #Orders/Checkout
   get '/checkout', to: 'orders#new'
   post '/checkout', to: 'orders#create'
-
-  #Shop
-  get '/shop', to: 'items#index'
-  resources :items, only: [:show]
 
   #Reviews
   resources :reviews, only: [:create, :index]
